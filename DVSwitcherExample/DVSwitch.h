@@ -19,7 +19,7 @@
 @property (nonatomic) CGFloat sliderOffset; // slider offset from background, top, bottom, left, right
 
 + (instancetype)switchWithStringsArray:(NSArray *)strings;
-- (instancetype)initWithStringsArray:(NSArray *)labels;
+- (instancetype)initWithStringsArray:(NSArray *)strings;
 
 - (void)forceSelectedIndex:(NSInteger)index animated:(BOOL)animated; // sets the index, also calls handler block
 

@@ -69,7 +69,7 @@
     // fifth switch
     
     DVSwitch *fifth = [DVSwitch switchWithStringsArray:@[@"Wow", @"Such good"]];
-    fifth.frame = CGRectMake(160, 230, self.view.frame.size.width / 2 - 10, 20);
+    fifth.frame = CGRectMake(self.view.frame.size.width / 2 + 10, 230, self.view.frame.size.width / 2 - 40, 20);
     fifth.sliderOffset = 1.0;
     fifth.cornerRadius = 10;
     fifth.font = [UIFont fontWithName:@"Baskerville-Italic" size:18];
