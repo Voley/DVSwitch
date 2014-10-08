@@ -3,15 +3,21 @@ DVSwitch
 
 Flexible and customizable control based on UISwitch and UISegmentedControl written in Objective-C.
 
-<img src="http://i.imgur.com/FH1CQRX.png">
+<img src="http://i.imgur.com/ZrTCGfd.png">
 
 
 DVSwitch was inspired by UISwitch and UISegmentedControl. The goals of this code are:
 
 * Easily customizable control with nice animations
-* Beautiful font color inversion effect - label color changes per pixel
 * Supporting pan or swipe interactions
 * Requires very little setup - images are not needed
+* Beautiful font color inversion effect - label color changes per pixel:
+* Automatic adjustment based on number of items
+
+<img src="http://i.imgur.com/rX0O15a.png">
+
+*Slider is halfway from one item to another, notice per pixel text color change*
+
 
 Usage
 -----
