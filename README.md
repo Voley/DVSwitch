@@ -17,7 +17,7 @@ Usage
 -----
 
     DVSwitch *switcher = [[DVSwitch alloc] initWithStringsArray:@[@"First", @"Second"]];
-    switcher.frame = CGRectMake(20, 300, self.view.frame.size.width - 40, 34);
+    switcher.frame = CGRectMake(20, 60, self.view.frame.size.width - 40, 34);
     [self.view addSubview:switcher];
     [switcher setPressedHandler:^(NSUInteger index) {
         
