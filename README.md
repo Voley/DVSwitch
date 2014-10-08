@@ -39,7 +39,7 @@ Customizable properties:
 * `CGFLoat sliderOffset` - pixel offset in points between the slider and the edge of control
 
 When the user taps or slides the control, handler block is getting called with the index of element which was triggered. To set it use the following method:<br />
-    `- - (void)setPressedHandler:(void (^)(NSUInteger index))handler;;`
+    `- (void)setPressedHandler:(void (^)(NSUInteger index))handler;`
 
 --
 
