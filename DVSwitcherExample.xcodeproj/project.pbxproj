@@ -14,6 +14,7 @@
 		E55DF55419E500F10099D8AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E55DF55319E500F10099D8AC /* Images.xcassets */; };
 		E55DF55719E500F10099D8AC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E55DF55519E500F10099D8AC /* LaunchScreen.xib */; };
 		E55DF56319E500F10099D8AC /* DVSwitcherExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E55DF56219E500F10099D8AC /* DVSwitcherExampleTests.m */; };
+		E55DF57219E5022A0099D8AC /* DVSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = E55DF57119E5022A0099D8AC /* DVSwitch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		E55DF55C19E500F10099D8AC /* DVSwitcherExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DVSwitcherExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E55DF56119E500F10099D8AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E55DF56219E500F10099D8AC /* DVSwitcherExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DVSwitcherExampleTests.m; sourceTree = "<group>"; };
+		E55DF57019E5022A0099D8AC /* DVSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVSwitch.h; sourceTree = "<group>"; };
+		E55DF57119E5022A0099D8AC /* DVSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVSwitch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,7 @@
 		E55DF54519E500F10099D8AC /* DVSwitcherExample */ = {
 			isa = PBXGroup;
 			children = (
+				E55DF56C19E501030099D8AC /* Switcher */,
 				E55DF54A19E500F10099D8AC /* AppDelegate.h */,
 				E55DF54B19E500F10099D8AC /* AppDelegate.m */,
 				E55DF54D19E500F10099D8AC /* ViewController.h */,
@@ -117,6 +121,15 @@
 				E55DF56119E500F10099D8AC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E55DF56C19E501030099D8AC /* Switcher */ = {
+			isa = PBXGroup;
+			children = (
+				E55DF57019E5022A0099D8AC /* DVSwitch.h */,
+				E55DF57119E5022A0099D8AC /* DVSwitch.m */,
+			);
+			name = Switcher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E55DF54F19E500F10099D8AC /* ViewController.m in Sources */,
+				E55DF57219E5022A0099D8AC /* DVSwitch.m in Sources */,
 				E55DF54C19E500F10099D8AC /* AppDelegate.m in Sources */,
 				E55DF54919E500F10099D8AC /* main.m in Sources */,
 			);
@@ -344,6 +358,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DVSwitcherExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -354,6 +369,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DVSwitcherExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

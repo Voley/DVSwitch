@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class DVSwitch;
+
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic) DVSwitch *switcher;
 
 @end
 
