@@ -26,9 +26,6 @@
     self.switcher = [[DVSwitch alloc] initWithStringsArray:@[@"First", @"Second"]];
     self.switcher.frame = CGRectMake(margin, margin * 2, self.view.frame.size.width - margin * 2, 30);
     [self.view addSubview:self.switcher];
-    
-    [self.switcher forceSelectedIndex:1 animated:NO];
-    
     [self.switcher setPressedHandler:^(NSUInteger index) {
        
         NSLog(@"Did press position on first switch at index: %lu", (unsigned long)index);
