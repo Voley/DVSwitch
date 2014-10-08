@@ -1,7 +1,7 @@
 DVSwitch
 ========
 
-Flexible and customizable control based on UISwitch and UISegmentedControl written in Objective-C.
+Customizable control based on UISwitch and UISegmentedControl written in Objective-C
 
 <img src="http://i.imgur.com/ZrTCGfd.png">
 
