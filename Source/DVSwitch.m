@@ -37,7 +37,7 @@
     return self;
 }
 
- + (instancetype)switchWithStringsArray:(NSArray *)strings
++ (instancetype)switchWithStringsArray:(NSArray *)strings
 {
     // to do
     return [[DVSwitch alloc] initWithStringsArray:strings];
@@ -55,7 +55,7 @@
     self.sliderColor = [UIColor whiteColor];
     self.labelTextColorInsideSlider = [UIColor blackColor];
     self.labelTextColorOutsideSlider = [UIColor whiteColor];
-
+    
     self.backgroundView = [[UIView alloc] init];
     self.backgroundView.backgroundColor = self.backgroundColor;
     self.backgroundView.userInteractionEnabled = YES;
@@ -86,7 +86,7 @@
     self.sliderView.backgroundColor = self.sliderColor;
     self.sliderView.clipsToBounds = YES;
     [self addSubview:self.sliderView];
-
+    
     self.onTopLabels = [[NSMutableArray alloc] init];
     
     for (NSString *string in self.strings) {
@@ -128,11 +128,28 @@
     
     if (animated) {
         
-        [self animateChangeToIndex:index];
+        [self animateChangeToIndex:index callHandler:YES];
         
     } else {
         
-        [self changeToIndexWithoutAnimation:index];
+        [self changeToIndexWithoutAnimation:index callHandler:YES];
+    }
+}
+
+- (void)selectIndex:(NSInteger)index animated:(BOOL)animated
+{
+    if (index > [self.strings count]) {
+        return;
+    }
+    self.selectedIndex = index;
+    
+    if (animated) {
+        
+        [self animateChangeToIndex:index callHandler:NO];
+        
+    } else {
+        
+        [self changeToIndexWithoutAnimation:index callHandler:NO];
     }
 }
 
@@ -140,7 +157,7 @@
 {
     self.backgroundView.layer.cornerRadius = self.cornerRadius;
     self.sliderView.layer.cornerRadius = self.cornerRadius - 1;
-
+    
     self.backgroundView.backgroundColor = self.backgroundColor;
     self.sliderView.backgroundColor = self.sliderColor;
     
@@ -170,7 +187,7 @@
     }
 }
 
-- (void)animateChangeToIndex:(NSUInteger)selectedIndex
+- (void)animateChangeToIndex:(NSUInteger)selectedIndex callHandler:(BOOL)callHandler
 {
     
     if (self.willBePressedHandlerBlock) {
@@ -195,13 +212,13 @@
         
     } completion:^(BOOL finished) {
         
-        if (self.handlerBlock) {
+        if (self.handlerBlock && callHandler) {
             self.handlerBlock(selectedIndex);
         }
     }];
 }
 
-- (void)changeToIndexWithoutAnimation:(NSUInteger)selectedIndex
+- (void)changeToIndexWithoutAnimation:(NSUInteger)selectedIndex callHandler:(BOOL)callHandler
 {
     if (self.willBePressedHandlerBlock) {
         self.willBePressedHandlerBlock(selectedIndex);
@@ -221,7 +238,7 @@
         label.frame = CGRectMake(label.frame.origin.x - offRect.origin.x, label.frame.origin.y - offRect.origin.y, label.frame.size.width, label.frame.size.height);
     }
     
-    if (self.handlerBlock) {
+    if (self.handlerBlock && callHandler) {
         self.handlerBlock(selectedIndex);
     }
 }
@@ -229,7 +246,7 @@
 - (void)handleRecognizerTap:(UITapGestureRecognizer *)rec
 {
     self.selectedIndex = rec.view.tag;
-    [self animateChangeToIndex:self.selectedIndex];
+    [self animateChangeToIndex:self.selectedIndex callHandler:YES];
 }
 
 - (void)sliderMoved:(UIPanGestureRecognizer *)rec
@@ -256,7 +273,7 @@
             
             self.sliderView.frame = CGRectMake(maxPos, self.sliderView.frame.origin.y, self.sliderView.frame.size.width, self.sliderView.frame.size.height);
         }
-
+        
         CGRect newFrame = self.sliderView.frame;
         CGRect offRect = CGRectMake(newFrame.origin.x - oldFrame.origin.x, newFrame.origin.y - oldFrame.origin.y, 0, 0);
         
@@ -266,7 +283,7 @@
         }
         
     } else if (rec.state == UIGestureRecognizerStateEnded || rec.state == UIGestureRecognizerStateCancelled || rec.state == UIGestureRecognizerStateFailed) {
-
+        
         NSMutableArray *distances = [[NSMutableArray alloc] init];
         
         for (int i = 0; i < [self.strings count]; i++) {
@@ -285,7 +302,7 @@
         
         CGFloat sliderWidth = self.frame.size.width / [self.strings count];
         CGFloat desiredX = sliderWidth * index + self.sliderOffset;
-
+        
         if (self.sliderView.frame.origin.x != desiredX) {
             
             CGRect evenOlderFrame = self.sliderView.frame;
@@ -294,7 +311,7 @@
             CGFloat time = fabs(distance / 300);
             
             [UIView animateWithDuration:time animations:^{
-               
+                
                 self.sliderView.frame = CGRectMake(desiredX, self.sliderView.frame.origin.y, self.sliderView.frame.size.width, self.sliderView.frame.size.height);
                 
                 CGRect newFrame = self.sliderView.frame;
@@ -306,7 +323,7 @@
                     label.frame = CGRectMake(label.frame.origin.x - offRect.origin.x, label.frame.origin.y - offRect.origin.y, label.frame.size.width, label.frame.size.height);
                 }
             } completion:^(BOOL finished) {
-               
+                
                 self.selectedIndex = index;
                 
                 if (self.handlerBlock) {
@@ -317,9 +334,9 @@
             
         } else {
             
-                if (self.handlerBlock) {
-                    self.handlerBlock(self.selectedIndex);
-                }
+            if (self.handlerBlock) {
+                self.handlerBlock(self.selectedIndex);
+            }
         }
     }
 }
