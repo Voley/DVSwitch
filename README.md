@@ -60,7 +60,7 @@ The control might work on earlier versions, but this was not tested.
 Changelog
 -----
 
-1.0.1 - Added method to change index without calling completion block.
+1.0.1 - Added method to change index without calling completion block.  
 1.0.0 - Initial version.
 
 Support
