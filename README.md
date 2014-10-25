@@ -57,12 +57,24 @@ iOS 7.0 and Xcode 6.0
 
 The control might work on earlier versions, but this was not tested.
 
+Changelog
+-----
+
+1.0.1 - Added method to change index without calling completion block.
+1.0.0 - Initial version.
+
 Support
 -----
-We will welcome any feedback or pull requests to the project.
+We will welcome any feedback or pull requests to the project. Any changes should NOT change already working behaviour and API. Additions are welcome.
 
 
-Version: 1.0.0<br>
+Version: 1.0.1<br>
 License: [MIT](http://opensource.org/licenses/MIT)
+
+Contributors:
+-----
+René Fouquet
+Dmitry Volevodz
+
 
 --
