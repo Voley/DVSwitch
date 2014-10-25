@@ -27,10 +27,10 @@
 
 - (void)setPressedHandler:(void (^)(NSUInteger index))handler;
 
-
 // This method sets handler block that is getting called right before the switcher starts animating the transition
 
 - (void)setWillBePressedHandler:(void (^)(NSUInteger index))handler;
 
+- (void)selectIndex:(NSInteger)index animated:(BOOL)animated; // sets the index without calling the handler block
 
 @end
