@@ -73,7 +73,7 @@ License: [MIT](http://opensource.org/licenses/MIT)
 
 Contributors:
 -----
-René Fouquet
+René Fouquet  
 Dmitry Volevodz
 
 
