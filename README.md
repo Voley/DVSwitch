@@ -30,7 +30,6 @@ Usage
         NSLog(@"Did switch to index: %lu", (unsigned long)index);
         
     }];
-    [self.view addSubview:switcher];
     
 
 
