@@ -242,8 +242,9 @@
         
         UILabel *label = self.labels[i];
         label.frame = CGRectMake(i * sliderWidth, 0, sliderWidth, self.frame.size.height);
-        if (self.font)
+        if (self.font) {
             label.font = self.font;
+        }
         label.textColor = self.labelTextColorOutsideSlider;
     }
     
@@ -251,8 +252,9 @@
         
         UILabel *label = self.onTopLabels[j];
         label.frame = CGRectMake([self.sliderView convertPoint:CGPointMake(j * sliderWidth, 0) fromView:self.backgroundView].x, - self.sliderOffset, sliderWidth, self.frame.size.height);
-        if (self.font)
+        if (self.font) {
             label.font = self.font;
+        }
         label.textColor = self.labelTextColorInsideSlider;
     }
 }
