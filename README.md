@@ -72,6 +72,7 @@ License: [MIT](http://opensource.org/licenses/MIT)
 
 Contributors:
 -----
+Stas Zhukovskiy
 René Fouquet  
 Dmitry Volevodz
 
