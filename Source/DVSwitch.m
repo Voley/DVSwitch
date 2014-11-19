@@ -334,6 +334,8 @@
             
         } else {
             
+            self.selectedIndex = index;
+            
             if (self.handlerBlock) {
                 self.handlerBlock(self.selectedIndex);
             }
