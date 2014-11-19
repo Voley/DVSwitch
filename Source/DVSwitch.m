@@ -108,6 +108,74 @@
     return self;
 }
 
+- (instancetype)initWithAttributedStringsArray:(NSArray *)strings {
+    self = [super init];
+    
+    self.strings        = strings;
+    self.cornerRadius   = 12.0f;
+    self.sliderOffset   = 1.0f;
+    
+    self.backgroundColor    = [UIColor colorWithRed:70/255.0 green:70/255.0 blue:70/255.0 alpha:1.0];
+    self.sliderColor        = [UIColor whiteColor];
+    self.labelTextColorInsideSlider     = [UIColor blackColor];
+    self.labelTextColorOutsideSlider    = [UIColor whiteColor];
+    
+    self.backgroundView = [[UIView alloc] init];
+    
+    self.backgroundView.backgroundColor         = self.backgroundColor;
+    self.backgroundView.userInteractionEnabled  = YES;
+    [self addSubview:self.backgroundView];
+    
+    self.labels = [[NSMutableArray alloc] init];
+    
+    [self.strings enumerateObjectsUsingBlock:^(NSMutableAttributedString *str, NSUInteger idx, BOOL *stop) {
+        
+        [str addAttribute:NSForegroundColorAttributeName
+                    value:self.labelTextColorOutsideSlider
+                    range:NSMakeRange(0, str.length)];
+        
+        UILabel *label          = [[UILabel alloc] init];
+        label.tag               = idx;
+        label.attributedText    = str;
+        label.textAlignment     = NSTextAlignmentCenter;
+        
+        [self.backgroundView addSubview:label];
+        [self.labels addObject:label];
+        
+        UITapGestureRecognizer *rec = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                              action:@selector(handleRecognizerTap:)];
+        [label addGestureRecognizer:rec];
+        label.userInteractionEnabled = YES;
+    }];
+    
+    self.sliderView                 = [[UIView alloc] init];
+    self.sliderView.backgroundColor = self.sliderColor;
+    self.sliderView.clipsToBounds   = YES;
+    [self addSubview:self.sliderView];
+    
+    self.onTopLabels = [[NSMutableArray alloc] init];
+    
+    [self.strings enumerateObjectsUsingBlock:^(NSMutableAttributedString *str, NSUInteger idx, BOOL *stop) {
+        
+        [str addAttribute:NSForegroundColorAttributeName
+                    value:self.labelTextColorInsideSlider
+                    range:NSMakeRange(0, str.length)];
+        
+        UILabel *label          = [[UILabel alloc] init];
+        label.attributedText    = str;
+        label.textAlignment     = NSTextAlignmentCenter;
+       
+        [self.sliderView addSubview:label];
+        [self.onTopLabels addObject:label];
+    }];
+    
+    UIPanGestureRecognizer *sliderRec = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                action:@selector(sliderMoved:)];
+    [self.sliderView addGestureRecognizer:sliderRec];
+    
+    return self;
+}
+
 - (void)setPressedHandler:(void (^)(NSUInteger))handler
 {
     self.handlerBlock = handler;
@@ -174,7 +242,9 @@
         
         UILabel *label = self.labels[i];
         label.frame = CGRectMake(i * sliderWidth, 0, sliderWidth, self.frame.size.height);
-        label.font = self.font;
+        if (self.font) {
+            label.font = self.font;
+        }
         label.textColor = self.labelTextColorOutsideSlider;
     }
     
@@ -182,7 +252,9 @@
         
         UILabel *label = self.onTopLabels[j];
         label.frame = CGRectMake([self.sliderView convertPoint:CGPointMake(j * sliderWidth, 0) fromView:self.backgroundView].x, - self.sliderOffset, sliderWidth, self.frame.size.height);
-        label.font = self.font;
+        if (self.font) {
+            label.font = self.font;
+        }
         label.textColor = self.labelTextColorInsideSlider;
     }
 }
